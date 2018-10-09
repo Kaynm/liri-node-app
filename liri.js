@@ -18,7 +18,7 @@ console.log("Type my-tweets, spotify-this-song, movie-this, or do-what-it-says t
 	}
 
 function changeAction(){
-	//action statement, switch statement to declare what action to execute.
+	//switch statement to declare what action to execute.
 	switch(userCommand){
 
 		case 'my-tweets':
@@ -65,10 +65,9 @@ function fetchTweets(){
 
 function spotifyMe(){
     console.log("Music to inspire some coding genius...");
-    var spotify = new Spotify(keys.spotify);
-
+    
+	var spotify = new Spotify(keys.spotify);
 	//variable for search term, test if defined.
-
 	var searchTrack;
 	if(secondCommand === undefined){
 		searchTrack = "The Sign";
@@ -132,12 +131,9 @@ function followTheTextbook(){
             secondCommand = secondCommand + "+" + dataArr[i];
         };
         //run action
-		theSwitch();
-		
-    	};//end else
-
-    });//end readfile
-
-};//end followTheTextbook
-
+		changeAction();
+	
+    	};
+    });
+};
 changeAction();
