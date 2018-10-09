@@ -10,14 +10,14 @@ var fs = require('fs');
 
 var userCommand = process.argv[2];
 var secondCommand = process.argv[3];
-//capture user input, and inform user of what to type in.
+//capture user input, and tell user what to type in.
 console.log("Type my-tweets, spotify-this-song, movie-this, or do-what-it-says to get started!");
 //process multiple words if user types more than asked.
 	for(i=4; i<process.argv.length; i++){
 	    secondCommand += '+' + process.argv[i];
 	}
 
-function theGreatSwitch(){
+function changeAction(){
 	//action statement, switch statement to declare what action to execute.
 	switch(userCommand){
 
@@ -101,7 +101,7 @@ function aMovieForMe(){
 		searchMovie = secondCommand;
 	};
 
-	var url = 'http://www.omdbapi.com/?t=' + searchMovie +'&y=&plot=long&tomatoes=true&r=json';
+	var url = 'http://www.omdbapi.com/?apikey=trilogy&t=' + searchMovie +'&y=&plot=long&tomatoes=true&r=json';
    	request(url, function(error, response, body){
 	    if(!error && response.statusCode == 200){
 	        console.log("Title: " + JSON.parse(body)["Title"]);
@@ -132,7 +132,7 @@ function followTheTextbook(){
             secondCommand = secondCommand + "+" + dataArr[i];
         };
         //run action
-		theGreatSwitch();
+		theSwitch();
 		
     	};//end else
 
@@ -140,4 +140,4 @@ function followTheTextbook(){
 
 };//end followTheTextbook
 
-theGreatSwitch();
+changeAction();
